@@ -1,5 +1,6 @@
 import requests
 
+
 def save_xml():
     # URL of the XML document
     url = "https://news.yahoo.com/rss"
@@ -15,6 +16,7 @@ def save_xml():
         print("XML file has been saved successfully.")
     else:
         print("Failed to retrieve the XML document. Status code:", response.status_code)
+
 
 # Call the function to save the XML file
 if __name__ == "__main__":

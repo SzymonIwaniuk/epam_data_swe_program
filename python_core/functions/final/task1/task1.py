@@ -1,6 +1,7 @@
 from typing import List
 
-#TODO
+
+# TODO
 def split(data: str, sep=None, maxsplit=-1):
     if maxsplit == 0:
         if sep is None:
@@ -11,7 +12,7 @@ def split(data: str, sep=None, maxsplit=-1):
 
     res = []
 
-    if sep is None: 
+    if sep is None:
         i = 0
         n = len(data)
         splits_done = 0
@@ -49,21 +50,20 @@ def split(data: str, sep=None, maxsplit=-1):
             splits_done += 1
 
         res.append(data[prev:])
-    
-    if sep is None and len(res) == 1 and res[0] == '':
+
+    if sep is None and len(res) == 1 and res[0] == "":
         return []
-        
-    return res 
+
+    return res
 
 
-if __name__ == '__main__':
-    assert split('') == []
-    assert split(',123,', sep=',') == ['', '123', '']
-    assert split('test') == ['test']
-    assert split('Python    2     3', maxsplit=1) == ['Python', '2     3']
-    assert split('    test     6    7', maxsplit=1) == ['test', '6    7']
-    assert split('    Hi     8    9', maxsplit=0) == ['Hi     8    9']
-    assert split('    set   3     4') == ['set', '3', '4']
-    assert split('set;:23', sep=';:', maxsplit=0) == ['set;:23']
-    assert split('set;:;:23', sep=';:', maxsplit=2) == ['set', '', '23']
-
+if __name__ == "__main__":
+    assert split("") == []
+    assert split(",123,", sep=",") == ["", "123", ""]
+    assert split("test") == ["test"]
+    assert split("Python    2     3", maxsplit=1) == ["Python", "2     3"]
+    assert split("    test     6    7", maxsplit=1) == ["test", "6    7"]
+    assert split("    Hi     8    9", maxsplit=0) == ["Hi     8    9"]
+    assert split("    set   3     4") == ["set", "3", "4"]
+    assert split("set;:23", sep=";:", maxsplit=0) == ["set;:23"]
+    assert split("set;:;:23", sep=";:", maxsplit=2) == ["set", "", "23"]

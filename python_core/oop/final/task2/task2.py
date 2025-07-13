@@ -3,8 +3,8 @@ class Cipher:
         keyword = keyword.lower()
         seen = set()
         self.plain = "abcdefghijklmnopqrstuvwxyz"
-        key_unique = ''.join([c for c in keyword if not (c in seen or seen.add(c))])
-        remaining = ''.join([c for c in self.plain if c not in key_unique])
+        key_unique = "".join([c for c in keyword if not (c in seen or seen.add(c))])
+        remaining = "".join([c for c in self.plain if c not in key_unique])
         self.cipher = key_unique + remaining
 
         self.encode_map = str.maketrans(self.plain, self.cipher)
@@ -15,4 +15,3 @@ class Cipher:
 
     def decode(self, data):
         return data.lower().translate(self.decode_map).capitalize() if data else ""
-

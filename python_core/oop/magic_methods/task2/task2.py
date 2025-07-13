@@ -1,4 +1,4 @@
-class Bird():
+class Bird:
     def __init__(self, name: str) -> None:
         self.name = name
 
@@ -10,10 +10,10 @@ class Bird():
 
 
 class FlyingBird(Bird):
-    def __init__(self, name: str, ration = 'grains') -> None:
+    def __init__(self, name: str, ration="grains") -> None:
         super().__init__(name)
         self.ration = ration
-        
+
     def __str__(self) -> str:
         return f"{self.name} bird can walk and fly"
 
@@ -22,7 +22,7 @@ class FlyingBird(Bird):
 
 
 class NonFlyingBird(Bird):
-    def __init__(self, name: str, ration = 'fish') -> None:
+    def __init__(self, name: str, ration="fish") -> None:
         super().__init__(name)
         self.ration = ration
 
@@ -37,7 +37,7 @@ class NonFlyingBird(Bird):
 
 
 class SuperBird(NonFlyingBird, FlyingBird):
-    def __init__(self, name: str, ration = 'fish') -> str:
+    def __init__(self, name: str, ration="fish") -> str:
         super().__init__(name, ration)
 
     def __str__(self) -> str:
@@ -45,4 +45,3 @@ class SuperBird(NonFlyingBird, FlyingBird):
 
     def fly(self) -> str:
         return f"{self.name} bird can fly"
-

@@ -24,4 +24,3 @@ class LogFile(ContextDecorator):
             f.write(log_line)
 
         return False
-

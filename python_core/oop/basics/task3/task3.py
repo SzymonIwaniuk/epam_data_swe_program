@@ -2,9 +2,9 @@ from typing import Optional
 
 
 class Counter:
-    inf = float('inf')
+    inf = float("inf")
 
-    def __init__(self, start = 0, stop = inf) -> None:
+    def __init__(self, start=0, stop=inf) -> None:
         self.cnt = start
         self.stop = stop
 
@@ -16,4 +16,3 @@ class Counter:
 
     def get(self) -> int:
         return self.cnt
-

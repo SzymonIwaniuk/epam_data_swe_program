@@ -4,8 +4,10 @@ import requests
 import xml.etree.ElementTree as ET
 from json import dumps as json_dumps
 
+
 class UnhandledException(Exception):
     pass
+
 
 def parse_rss_item(item, limit):
     parsed_items = []
@@ -15,24 +17,31 @@ def parse_rss_item(item, limit):
         if limit is not None and count >= limit:
             break
 
-        title = elem.find('title').text if elem.find('title') is not None else ''
-        author = elem.find('author').text if elem.find('author') is not None else ''
-        pub_date = elem.find('pubDate').text if elem.find('pubDate') is not None else ''
-        link = elem.find('link').text if elem.find('link') is not None else ''
-        category = [category.text for category in elem.findall('category')]
-        description = elem.find('description').text if elem.find('description') is not None else ''
+        title = elem.find("title").text if elem.find("title") is not None else ""
+        author = elem.find("author").text if elem.find("author") is not None else ""
+        pub_date = elem.find("pubDate").text if elem.find("pubDate") is not None else ""
+        link = elem.find("link").text if elem.find("link") is not None else ""
+        category = [category.text for category in elem.findall("category")]
+        description = (
+            elem.find("description").text
+            if elem.find("description") is not None
+            else ""
+        )
 
-        parsed_items.append({
-            'title': title,
-            'author': author,
-            'pubDate': pub_date,
-            'link': link,
-            'category': category,
-            'description': description
-        })
+        parsed_items.append(
+            {
+                "title": title,
+                "author": author,
+                "pubDate": pub_date,
+                "link": link,
+                "category": category,
+                "description": description,
+            }
+        )
         count += 1
 
     return parsed_items
+
 
 def rss_parser(
     xml: str,
@@ -52,30 +61,46 @@ def rss_parser(
         Which then can be printed to stdout or written to file as a separate lines.
     """
     root = ET.fromstring(xml)
-    channel = root.find('channel')
+    channel = root.find("channel")
 
-    title = channel.find('title').text if channel.find('title') is not None else ''
-    link = channel.find('link').text if channel.find('link') is not None else ''
-    description = channel.find('description').text if channel.find('description') is not None else ''
-    language = channel.find('language').text if channel.find('language') is not None else ''
-    pub_date = channel.find('pubDate').text if channel.find('pubDate') is not None else ''
-    last_build_date = channel.find('lastBuildDate').text if channel.find('lastBuildDate') is not None else ''
-    managing_editor = channel.find('managingEditor').text if channel.find('managingEditor') is not None else ''
-    categories = [category.text for category in channel.findall('category')]
+    title = channel.find("title").text if channel.find("title") is not None else ""
+    link = channel.find("link").text if channel.find("link") is not None else ""
+    description = (
+        channel.find("description").text
+        if channel.find("description") is not None
+        else ""
+    )
+    language = (
+        channel.find("language").text if channel.find("language") is not None else ""
+    )
+    pub_date = (
+        channel.find("pubDate").text if channel.find("pubDate") is not None else ""
+    )
+    last_build_date = (
+        channel.find("lastBuildDate").text
+        if channel.find("lastBuildDate") is not None
+        else ""
+    )
+    managing_editor = (
+        channel.find("managingEditor").text
+        if channel.find("managingEditor") is not None
+        else ""
+    )
+    categories = [category.text for category in channel.findall("category")]
 
-    items = parse_rss_item(channel.findall('item'), limit)
+    items = parse_rss_item(channel.findall("item"), limit)
 
     if json:
         result = {
-            'title': title,
-            'link': link,
-            'description': description,
-            'language': language,
-            'pubDate': pub_date,
-            'lastBuildDate': last_build_date,
-            'managingEditor': managing_editor,
-            'categories': categories,
-            'items': items
+            "title": title,
+            "link": link,
+            "description": description,
+            "language": language,
+            "pubDate": pub_date,
+            "lastBuildDate": last_build_date,
+            "managingEditor": managing_editor,
+            "categories": categories,
+            "items": items,
         }
         return [json_dumps(result, indent=2)]
     else:
@@ -92,18 +117,19 @@ def rss_parser(
 
         for item in items:
             result.append(f"\nTitle: {item['title']}")
-            if item['author']:
+            if item["author"]:
                 result.append(f"Author: {item['author']}")
-            if item['pubDate']:
+            if item["pubDate"]:
                 result.append(f"Published: {item['pubDate']}")
-            if item['link']:
+            if item["link"]:
                 result.append(f"Link: {item['link']}")
-            if item['category']:
+            if item["category"]:
                 result.append(f"Categories: {', '.join(item['category'])}")
-            if item['description']:
+            if item["description"]:
                 result.append(f"\n{item['description']}\n")
 
         return result
+
 
 def main(argv: Optional[Sequence] = None):
     """
@@ -128,6 +154,7 @@ def main(argv: Optional[Sequence] = None):
         return 0
     except Exception as e:
         raise UnhandledException(e)
+
 
 if __name__ == "__main__":
     main()

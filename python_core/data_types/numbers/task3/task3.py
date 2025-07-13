@@ -12,4 +12,3 @@ def foo(nums: List[int]) -> List[int]:
         nums[i] = produckt // nums[i]
 
     return nums
-

@@ -2,6 +2,7 @@ import os
 import shutil
 import uuid
 
+
 class TempDir:
     def __enter__(self):
         self.original_dir = os.getcwd()
@@ -13,4 +14,3 @@ class TempDir:
     def __exit__(self, exc_type, exc_val, exc_tb):
         os.chdir(self.original_dir)
         shutil.rmtree(self.temp_dir)
-

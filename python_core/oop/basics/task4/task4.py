@@ -12,9 +12,8 @@ class HistoryDict:
 
     def get_history(self) -> List[str]:
         return self.history
-    
+
     def update_history(self, key: str) -> None:
         if len(self.history) == 5:
             self.history.pop(0)
         self.history.append(key)
-

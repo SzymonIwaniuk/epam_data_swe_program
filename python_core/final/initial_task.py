@@ -4,11 +4,14 @@ import requests
 import xml.etree.ElementTree as ET
 from json import dumps as json_dumps
 
+
 class UnhandledException(Exception):
     pass
 
+
 def parse_rss_item(item, limit):
     pass
+
 
 def main(argv: Optional[Sequence] = None):
     """
@@ -33,6 +36,7 @@ def main(argv: Optional[Sequence] = None):
         return 0
     except Exception as e:
         raise UnhandledException(e)
+
 
 if __name__ == "__main__":
     main()

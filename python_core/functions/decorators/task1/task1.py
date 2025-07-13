@@ -1,6 +1,6 @@
 from typing import Dict
 
-import time 
+import time
 
 
 execution_time: Dict[str, float] = {}
@@ -13,7 +13,7 @@ def time_decorator(fn):
     and put this time value to `execution_time` dictionary where `key` is
     decorated function name and `value` is this function execution time.
     """
-    
+
     def wrapper(*args, **kwargs):
         start_time = time.time()
         result = fn(*args, **kwargs)
@@ -22,5 +22,3 @@ def time_decorator(fn):
         return result
 
     return wrapper
-
-

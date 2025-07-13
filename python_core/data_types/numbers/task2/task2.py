@@ -9,15 +9,14 @@ def get_fizzbuzz_list(n: int) -> ListType:
 
     while i <= n:
         if i % 15 == 0:
-            sol.append('FizzBuzz')
+            sol.append("FizzBuzz")
         elif i % 3 == 0:
-            sol.append('Fizz')
+            sol.append("Fizz")
         elif i % 5 == 0:
-            sol.append('Buzz')
+            sol.append("Buzz")
         else:
             sol.append(i)
 
         i += 1
-        
-    return sol
 
+    return sol

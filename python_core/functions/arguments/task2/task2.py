@@ -10,4 +10,3 @@ def intersect(*args) -> set:
     for arg in args[1:]:
         result &= set(arg)
     return result
-

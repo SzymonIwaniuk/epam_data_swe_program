@@ -1,5 +1,5 @@
 def replacer(s: str) -> str:
-    res = ''
+    res = ""
 
     for char in s:
         if char == "'":
@@ -8,7 +8,5 @@ def replacer(s: str) -> str:
             res += "'"
         else:
             res += char
-            
+
     return res
-
-

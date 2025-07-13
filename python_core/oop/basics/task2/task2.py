@@ -2,6 +2,7 @@
 # Don't change names of classes. Create names for the variables
 # exactly the same as in the task.
 
+
 class SchoolMember:
     def __init__(self, name: str, age: int) -> None:
         self.name = name
@@ -24,7 +25,6 @@ class Student(SchoolMember):
     def __init__(self, name: str, age: int, grades: int) -> None:
         super().__init__(name, age)
         self.grades = grades
-    
+
     def show(self):
         return super().show() + f"Grades: {self.grades}"
-
