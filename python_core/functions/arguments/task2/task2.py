@@ -1,17 +1,13 @@
 def union(*args) -> set:
-    out = set()
-
-    for data in args:
-        out.update(set(data))
-
-    return out
+    result = set()
+    for arg in args:
+        result |= set(arg)
+    return result
 
 
 def intersect(*args) -> set:
-    first = set(args[0])
-
-    for next in args[1:]:
-        first.intersection(set(next))
-
-    return first
+    result = set(args[0])
+    for arg in args[1:]:
+        result &= set(arg)
+    return result
 
