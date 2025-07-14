@@ -1,3 +1,5 @@
 .venv
 .venv/
 __pycache__
+sql/dvdrental
+sql/dvdrental2
