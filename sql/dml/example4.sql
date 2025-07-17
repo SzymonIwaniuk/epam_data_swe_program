@@ -1,0 +1,1 @@
+TRUNCATE city CASCADE;
