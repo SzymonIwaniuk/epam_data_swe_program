@@ -3,8 +3,6 @@
 __pycache__
 
 
-sql/other/leetcode/*
-sql/other/leetcode
 sql/dvdrental
 sql/dvdrental2
 sql/.metadata
